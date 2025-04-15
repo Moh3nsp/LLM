@@ -1,6 +1,6 @@
 # 🔥 Token to Transformer — An End-to-End Guide to Building Large Language Models
 
-Welcome to **LLM From Scratch**, a comprehensive and educational implementation of a complete Large Language Model pipeline — from tokenization to fine-tuning. This repository is designed to **demystify the inner workings of LLMs** like GPT by offering a clean and modular source code that covers **every major component** of modern transformer-based models.
+Welcome to **Token to Transformer**,a hands-on and modular implementation of a complete Large Language Model pipeline. Whether you're new to the field or looking to deepen your understanding of transformers and LLMs, this repository offers a practical guide to the architecture and functioning of cutting-edge language models like GPT
 
 ## 🌟 Why This Repository?
 
