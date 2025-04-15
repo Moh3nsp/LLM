@@ -54,6 +54,7 @@ This project was built by learning from the best materials in the field. Key ins
 - [GPT Architecture Papers (GPT-1, GPT-2, GPT-3)](https://openai.com/research) by OpenAI   
 - [Hands-On Large Language Models](https://www.oreilly.com/library/view/hands-on-large-language/9781098150952/)  
 - [LLM Engineer's Handbook](https://www.oreilly.com/library/view/llm-engineers-handbook/9781836200079/)  
+- [Build a Large Language Model (From Scratch)](https://www.manning.com/books/build-a-large-language-model-from-scratch)  
 
 - Deep Learning Specialization — Coursera (Andrew Ng)  
 - PyTorch official tutorials and documentation  
