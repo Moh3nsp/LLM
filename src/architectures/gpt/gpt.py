@@ -31,7 +31,7 @@ class GPTModel(nn.Module):
         pos_emb = self.positional_embedding(
             torch.arange(seq_len, device=in_idx.device))
 
-        x = toks_emb+pos_emb
+        x = toks_emb + pos_emb
         x = self.dropout(x)
         x = self.transformer_blocks(x)
         x = self.final_norm(x)

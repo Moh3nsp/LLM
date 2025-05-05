@@ -25,12 +25,12 @@ class TransformerBlock(nn.Module):
         x = self.norm1(x)
         x = self.multi_attention(x)
         x = self.droput(x)
-        x += residual
+        x = x + residual
 
         residual = x
         x = self.norm2(x)
         x = self.feed_forward(x)
         x = self.droput(x)
-        x += residual
+        x = x + residual
 
         return x

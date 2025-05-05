@@ -7,6 +7,7 @@ import time
 class MultiHeadAttention(nn.Module):
     def __init__(self, head_num, in_dim, out_dim, context_size, dropout, qkv_bias=False):
         super().__init__()
+        assert out_dim % head_num == 0, "out_dim must be divisible by head_num"
 
         self.head_num = head_num
         self.head_dim = out_dim // head_num
@@ -15,12 +16,12 @@ class MultiHeadAttention(nn.Module):
         self.w_q = nn.Linear(in_dim, out_dim, bias=qkv_bias)
         self.w_k = nn.Linear(in_dim, out_dim, bias=qkv_bias)
         self.w_v = nn.Linear(in_dim, out_dim, bias=qkv_bias)
+        self.out_proj = nn.Linear(out_dim, out_dim)
+        self.dropout = nn.Dropout(dropout)
         # context_size == token_num, because we need to calculate context_vec for all tokens,
         # the result size is (token_num * token_num)
         self.register_buffer('mask', torch.triu(
             torch.ones(context_size, context_size), diagonal=1))
-        self.dropout = nn.Dropout(dropout)
-        self.out_proj = nn.Linear(out_dim, out_dim)
 
     def forward(self, inputs):
         b, token_num, token_vec_size = inputs.shape
@@ -57,7 +58,7 @@ class MultiHeadAttention(nn.Module):
         # we strike a balance between capturing meaningful relationships and preventing numerical instability,\
         # allowing the model to effectively attend to the relevant information in the input sequence.
         attention_weights = torch.softmax(
-            att_scores / keys.shape[2] ** 0.5, dim=-1)
+            att_scores / keys.shape[-1] ** 0.5, dim=-1)
 
         # apply dropout
         attention_weights = self.dropout(attention_weights)

@@ -3,6 +3,8 @@ __pycache__/
 *.py[cod]
 *$py.class
 #practices
+models/*
+
 src/practices/* 
 src\practices\*
 # C extensions
